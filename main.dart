@@ -1,33 +1,47 @@
 import 'package:flutter/material.dart';
-import 'catalogue_page.dart';
-
+import 'page2.dart';
 void main() {
-  runApp(const MiniShopApp());
-}
-
-class MiniShopApp extends StatelessWidget {
-  const MiniShopApp({super.key});
-
+  runApp(const MyApp()); }
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "MiniShop Manager",
-      theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFFF5F7FA),
-        primaryColor: const Color(0xFF0D1117),
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF00BFA6),
-          primary: const Color(0xFF0D1117),
-        ),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFF0D1117),
-          foregroundColor: Colors.white,
-          elevation: 0,
-        ),
-        fontFamily: 'Roboto',
+      title: 'Navigation Flutter',
+      home: const HomePage(),
+    );
+  }
+}
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Écran 1 : Accueil"),
       ),
-      home: const CataloguePage(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              "Bienvenue dans Flutter",
+              style: TextStyle(fontSize: 22),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const SecondPage()),
+                );
+              },
+              child: const Text("Aller à la page suivante"),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
