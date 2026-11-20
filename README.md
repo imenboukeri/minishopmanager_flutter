@@ -1,0 +1,1 @@
+# minishopmanager_flutter
